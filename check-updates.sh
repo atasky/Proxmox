@@ -70,7 +70,7 @@ USAGE () {
   echo -e "========="
   echo -e "  host                 Host-Mode"
   echo -e "  cluster              Cluster-Mode\n"
-  echo -e "Report issues at: <https://github.com/BassT23/Proxmox/issues>\n"
+  echo -e "Report issues at: <https://github.com/atasky/Proxmox/issues>\n"
 }
 
 

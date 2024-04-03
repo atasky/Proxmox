@@ -1,12 +1,12 @@
 <div align="center">
 
-![Logo](https://github.com/BassT23/Proxmox/assets/30832786/00fa746d-3d65-4b01-8906-50ecb845a50d)
+![Logo](https://github.com/atasky/Proxmox/assets/30832786/00fa746d-3d65-4b01-8906-50ecb845a50d)
 
 ![Screenshot_20230326_130709](https://user-images.githubusercontent.com/30832786/227771669-aae7e7f4-b27e-4095-950a-c6fa1f146503.png)
 
-[![GitHub release](https://img.shields.io/github/release/BassT23/Proxmox.svg)](https://GitHub.com/BassT23/Proxmox/releases/)
-[![GitHub stars](https://img.shields.io/github/stars/BassT23/Proxmox.svg)](https://github.com/BassT23/Proxmox/stargazers)
-[![downloads](https://img.shields.io/github/downloads/BassT23/Proxmox/total.svg)](https://github.com/BassT23/Proxmox/releases)
+[![GitHub release](https://img.shields.io/github/release/atasky/Proxmox.svg)](https://github.com/atasky/Proxmox/releases/)
+[![GitHub stars](https://img.shields.io/github/stars/atasky/Proxmox.svg)](https://github.com/atasky/Proxmox/stargazers)
+[![downloads](https://img.shields.io/github/downloads/atasky/Proxmox/total.svg)](https://github.com/atasky/Proxmox/releases)
 [![Discord](https://img.shields.io/discord/1149671790864506882)](https://discord.gg/nVpUg6BKn8)
 
 Proxmox® is a registered trademark of Proxmox Server Solutions GmbH.
@@ -34,11 +34,11 @@ I am no member of the Proxmox Server Solutions GmbH. This is not an official pro
 - Normal run is "Interactive" / Headless Mode can be run with `update -s`
 - Logging to ``/var/log/update-"$HOSTNAME".log``
 - Exit tracking, so you can send additional commands for finish or failure (edit files in `/root/Proxmox-Updater/exit`)
-- [Config file](https://github.com/BassT23/Proxmox/tree/master#config-file)
+- [Config file](https://github.com/atasky/Proxmox/tree/master#config-file)
 
 Info can be found with `update -h`
 
-Changelog: [here](https://github.com/BassT23/Proxmox/blob/master/change.log)
+Changelog: [here](https://github.com/atasky/Proxmox/blob/master/change.log)
 
 ### What does the script do:
 - The script makes system updates with apt/dnf/pacman/apk or yum on all nodes/LXCs and VMs (if VMs prepared for that)
@@ -50,7 +50,7 @@ Changelog: [here](https://github.com/BassT23/Proxmox/blob/master/change.log)
 # Installation:
 In Proxmox GUI Host Shell or as root on proxmox host terminal:
 ```
-bash <(curl -s https://raw.githubusercontent.com/BassT23/Proxmox/master/install.sh)
+bash <(curl -s https://raw.githubusercontent.com/atasky/Proxmox/master/install.sh)
 ```
 
 ## Cluster-Mode preparation:
@@ -80,14 +80,14 @@ So connect from first node (on which you install the Proxmox-Updater) to node2 w
 
 2. Use ssh connection with Key-Based Authentication (a little more work, but nicer output and "extra" support)
 
-     more infos here: [SSH Connection](https://github.com/BassT23/Proxmox/blob/master/ssh.md)
+     more infos here: [SSH Connection](https://github.com/atasky/Proxmox/blob/master/ssh.md)
 
 # Update the script:
 `update -up`
 
 If update run into issue, please remove first with:
 ```
-bash <(curl -s https://raw.githubusercontent.com/BassT23/Proxmox/master/install.sh) uninstall
+bash <(curl -s https://raw.githubusercontent.com/atasky/Proxmox/master/install.sh) uninstall
 ```
 and install new
 
@@ -126,7 +126,7 @@ Install beta update with `update beta -up`
 Go back to master, choose `update -up`
 
 # Q&A:
-[Discussion](https://github.com/BassT23/Proxmox/discussions/60)
+[Discussion](https://github.com/atasky/Proxmox/discussions/60)
 
 # Support:
 [![grafik](https://user-images.githubusercontent.com/30832786/227482640-e7800e89-32a6-44fc-ad3b-43eef5cdc4d4.png)](https://ko-fi.com/basst)
@@ -135,9 +135,9 @@ Go back to master, choose `update -up`
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="=https://github.com/BassT23"><img src="https://avatars.githubusercontent.com/u/30832786?v=4?s=100" width="100px;" alt="BassT23"/><br /><sub><b>BassT23</b></sub></a><br /><a href="https://github.com/BassT23/Proxmox/commits?author=BassT23" title="Code">💻</a> <a href="#maintenance-BassT23" title="Maintenance">🚧</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Gauvino"><img src="https://avatars.githubusercontent.com/u/68083474?v=4?s=100" width="100px;" alt="Gauvino"/><br /><sub><b>Gauvino</b></sub></a><br /><a href="https://github.com/BassT23/Proxmox/commits?author=Gauvino" title="Code">💻</a> <a href="#translation-Gauvino" title="Documentation">📖</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/elbim"><img src="https://avatars.githubusercontent.com/u/28606318?v=4?s=100" width="100px;" alt="elbim"/><br /><sub><b>elbim</b></sub></a><br /><a href="https://github.com/BassT23/Proxmox/commits?author=elbim" title="Code">💻</a> <a href="#translation-elbim"</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="=https://github.com/atasky"><img src="https://avatars.githubusercontent.com/u/30832786?v=4?s=100" width="100px;" alt="atasky"/><br /><sub><b>atasky</b></sub></a><br /><a href="https://github.com/atasky/Proxmox/commits?author=atasky" title="Code">💻</a> <a href="#maintenance-atasky" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Gauvino"><img src="https://avatars.githubusercontent.com/u/68083474?v=4?s=100" width="100px;" alt="Gauvino"/><br /><sub><b>Gauvino</b></sub></a><br /><a href="https://github.com/atasky/Proxmox/commits?author=Gauvino" title="Code">💻</a> <a href="#translation-Gauvino" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/elbim"><img src="https://avatars.githubusercontent.com/u/28606318?v=4?s=100" width="100px;" alt="elbim"/><br /><sub><b>elbim</b></sub></a><br /><a href="https://github.com/atasky/Proxmox/commits?author=elbim" title="Code">💻</a> <a href="#translation-elbim"</a></td>
     </tr>
   </tbody>
 </table>

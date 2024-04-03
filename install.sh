@@ -11,7 +11,7 @@ BRANCH="master"
 
 # Variable / Function
 LOCAL_FILES="/root/Proxmox-Updater"
-SERVER_URL="https://raw.githubusercontent.com/BassT23/Proxmox/$BRANCH"
+SERVER_URL="https://raw.githubusercontent.com/atasky/Proxmox/$BRANCH"
 
 #Colors
 BL="\e[36m"
@@ -24,7 +24,7 @@ CL="\e[0m"
 HEADER_INFO () {
   clear
   echo -e "\n \
-      https://github.com/BassT23/Proxmox"
+      https://github.com/atasky/Proxmox"
   cat <<'EOF'
      ____
     / __ \_________  _  ______ ___  ____  _  __
@@ -104,7 +104,7 @@ USAGE () {
         echo -e "  welcome              Install or Uninstall Welcome Screen"
         echo -e "  uninstall            Uninstall Proxmox-Updater"
         echo -e "  update               Update Proxmox-Updater\n"
-        echo -e "Report issues at: <https://github.com/BassT23/Proxmox/issues>\n"
+        echo -e "Report issues at: <https://github.com/atasky/Proxmox/issues>\n"
     fi
 }
 
@@ -144,7 +144,7 @@ INSTALL () {
       mkdir -p /root/Proxmox-Updater/VMs
       # Download latest release
       if ! [[ -d /root/Proxmox-Updater-Temp ]];then mkdir /root/Proxmox-Updater-Temp; fi
-        curl -s https://api.github.com/repos/BassT23/Proxmox/releases/latest | grep "browser_download_url" | cut -d : -f 2,3 | tr -d \" | wget -i - -q -O /root/Proxmox-Updater-Temp/Proxmox-Updater.tar.gz
+        curl -s https://api.github.com/repos/atasky/Proxmox/releases/latest | grep "browser_download_url" | cut -d : -f 2,3 | tr -d \" | wget -i - -q -O /root/Proxmox-Updater-Temp/Proxmox-Updater.tar.gz
         tar -zxf /root/Proxmox-Updater-Temp/Proxmox-Updater.tar.gz -C /root/Proxmox-Updater-Temp
         rm -rf /root/Proxmox-Updater-Temp/Proxmox-Updater.tar.gz || true
         TEMP_FILES=/root/Proxmox-Updater-Temp
@@ -157,7 +157,7 @@ INSTALL () {
       cp "$TEMP_FILES"/update-extras.sh $LOCAL_FILES/update-extras.sh
       cp "$TEMP_FILES"/update.conf $LOCAL_FILES/update.conf
       echo -e "${OR}Finished. Run Proxmox-Updater with 'update'.${CL}"
-      echo -e "For infos and warnings please check the readme under <https://github.com/BassT23/Proxmox>\n"
+      echo -e "For infos and warnings please check the readme under <https://github.com/atasky/Proxmox>\n"
       echo -e "${OR}Also want to install the Welcome-Screen?${CL}"
       read -p "Type [Y/y] or Enter for yes - anything else will exit: " -r
       if [[ $REPLY =~ ^[Yy]$ || $REPLY = "" ]]; then
@@ -187,11 +187,11 @@ ${OR}Is it OK for you, or want to backup your files first?${CL}\n"
         # Download files
         if ! [[ -d /root/Proxmox-Updater-Temp ]]; then mkdir /root/Proxmox-Updater-Temp; fi
         if [[ "$BRANCH" == master ]]; then
-          curl -s https://api.github.com/repos/BassT23/Proxmox/releases/latest | grep "browser_download_url" | cut -d : -f 2,3 | tr -d \" | wget -i - -q -O /root/Proxmox-Updater-Temp/Proxmox-Updater.tar.gz
+          curl -s https://api.github.com/repos/atasky/Proxmox/releases/latest | grep "browser_download_url" | cut -d : -f 2,3 | tr -d \" | wget -i - -q -O /root/Proxmox-Updater-Temp/Proxmox-Updater.tar.gz
         elif [[ "$BRANCH" == beta ]]; then
-          curl -s -L https://github.com/BassT23/Proxmox/tarball/beta > /root/Proxmox-Updater-Temp/Proxmox-Updater.tar.gz
+          curl -s -L https://github.com/atasky/Proxmox/tarball/beta > /root/Proxmox-Updater-Temp/Proxmox-Updater.tar.gz
         elif [[ "$BRANCH" == develop ]]; then
-          curl -s -L https://github.com/BassT23/Proxmox/tarball/develop > /root/Proxmox-Updater-Temp/Proxmox-Updater.tar.gz
+          curl -s -L https://github.com/atasky/Proxmox/tarball/develop > /root/Proxmox-Updater-Temp/Proxmox-Updater.tar.gz
         fi
         tar -zxf /root/Proxmox-Updater-Temp/Proxmox-Updater.tar.gz -C /root/Proxmox-Updater-Temp
         rm -rf /root/Proxmox-Updater-Temp/Proxmox-Updater.tar.gz || true
@@ -233,7 +233,7 @@ ${OR}Is it OK for you, or want to backup your files first?${CL}\n"
         rm -rf /root/Proxmox-Updater-Temp || true
         echo -e "${GN}Proxmox-Updater updated successfully.${CL}"
         if [[ "$BRANCH" != master ]]; then echo -e "${OR}  Installed: $BRANCH version${CL}"; fi
-        echo -e "For infos and warnings please check the readme under <https://github.com/BassT23/Proxmox>\n"
+        echo -e "For infos and warnings please check the readme under <https://github.com/atasky/Proxmox>\n"
       fi
     else
       # Install, because no installation found

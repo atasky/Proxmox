@@ -12,7 +12,7 @@ BRANCH="master"
 # Variable / Function
 LOG_FILE=/var/log/update-"$HOSTNAME".log    # <- change location for logfile if you want
 CONFIG_FILE="/root/Proxmox-Updater/update.conf"
-SERVER_URL="https://raw.githubusercontent.com/BassT23/Proxmox/$BRANCH"
+SERVER_URL="https://raw.githubusercontent.com/atasky/Proxmox/$BRANCH"
 
 # Colors
 BL="\e[36m"
@@ -25,7 +25,7 @@ CL="\e[0m"
 HEADER_INFO () {
   clear
   echo -e "\n \
-    https://github.com/BassT23/Proxmox"
+    https://github.com/atasky/Proxmox"
   cat <<'EOF'
      ____
     / __ \_________  _  ______ ___  ____  _  __
@@ -199,7 +199,7 @@ USAGE () {
     echo -e "  uninstall            Uninstall Proxmox-Updater\n"
     echo -e "  host                 Host-Mode"
     echo -e "  cluster              Cluster-Mode\n"
-    echo -e "Report issues at: <https://github.com/BassT23/Proxmox/issues>\n"
+    echo -e "Report issues at: <https://github.com/atasky/Proxmox/issues>\n"
   fi
 }
 
@@ -237,7 +237,7 @@ UPDATE () {
   echo -e "Update to $BRANCH branch?"
   read -p "Type [Y/y] or [Enter] for yes - anything else will exit: " -r
   if [[ $REPLY =~ ^[Yy]$ || $REPLY = "" ]]; then
-    bash <(curl -s "https://raw.githubusercontent.com/BassT23/Proxmox/$BRANCH"/install.sh) update
+    bash <(curl -s "https://raw.githubusercontent.com/atasky/Proxmox/$BRANCH"/install.sh) update
   else
     exit 2
   fi
@@ -258,23 +258,23 @@ UNINSTALL () {
 
 STATUS () {
   # Get Server Versions
-  curl -s https://raw.githubusercontent.com/BassT23/Proxmox/"$BRANCH"/update.sh > /root/Proxmox-Updater/temp/update.sh
-  curl -s https://raw.githubusercontent.com/BassT23/Proxmox/"$BRANCH"/update-extras.sh > /root/Proxmox-Updater/temp/update-extras.sh
-  curl -s https://raw.githubusercontent.com/BassT23/Proxmox/"$BRANCH"/update.conf > /root/Proxmox-Updater/temp/update.conf
+  curl -s https://raw.githubusercontent.com/atasky/Proxmox/"$BRANCH"/update.sh > /root/Proxmox-Updater/temp/update.sh
+  curl -s https://raw.githubusercontent.com/atasky/Proxmox/"$BRANCH"/update-extras.sh > /root/Proxmox-Updater/temp/update-extras.sh
+  curl -s https://raw.githubusercontent.com/atasky/Proxmox/"$BRANCH"/update.conf > /root/Proxmox-Updater/temp/update.conf
   SERVER_VERSION=$(awk -F'"' '/^VERSION=/ {print $2}' /root/Proxmox-Updater/temp/update.sh)
   SERVER_EXTRA_VERSION=$(awk -F'"' '/^VERSION=/ {print $2}' /root/Proxmox-Updater/temp/update-extras.sh)
   SERVER_CONFIG_VERSION=$(awk -F'"' '/^VERSION=/ {print $2}' /root/Proxmox-Updater/temp/update.conf)
   EXTRA_VERSION=$(awk -F'"' '/^VERSION=/ {print $2}' /root/Proxmox-Updater/update-extras.sh)
   CONFIG_VERSION=$(awk -F'"' '/^VERSION=/ {print $2}' /root/Proxmox-Updater/update.conf)
   if [[ "$WELCOME_SCREEN" == true ]]; then
-    curl -s https://raw.githubusercontent.com/BassT23/Proxmox/"$BRANCH"/welcome-screen.sh > /root/Proxmox-Updater/temp/welcome-screen.sh
-    curl -s https://raw.githubusercontent.com/BassT23/Proxmox/"$BRANCH"/check-updates.sh > /root/Proxmox-Updater/temp/check-updates.sh
+    curl -s https://raw.githubusercontent.com/atasky/Proxmox/"$BRANCH"/welcome-screen.sh > /root/Proxmox-Updater/temp/welcome-screen.sh
+    curl -s https://raw.githubusercontent.com/atasky/Proxmox/"$BRANCH"/check-updates.sh > /root/Proxmox-Updater/temp/check-updates.sh
     SERVER_WELCOME_VERSION=$(awk -F'"' '/^VERSION=/ {print $2}' /root/Proxmox-Updater/temp/welcome-screen.sh)
     SERVER_CHECK_UPDATE_VERSION=$(awk -F'"' '/^VERSION=/ {print $2}' /root/Proxmox-Updater/temp/check-updates.sh)
     WELCOME_VERSION=$(awk -F'"' '/^VERSION=/ {print $2}' /etc/update-motd.d/01-welcome-screen)
     CHECK_UPDATE_VERSION=$(awk -F'"' '/^VERSION=/ {print $2}' /root/Proxmox-Updater/check-updates.sh)
   fi
-  MODIFICATION=$(curl -s https://api.github.com/repos/BassT23/Proxmox | grep pushed_at | cut -d: -f2- | cut -c 3- | rev | cut -c 3- | rev)
+  MODIFICATION=$(curl -s https://api.github.com/repos/atasky/Proxmox | grep pushed_at | cut -d: -f2- | cut -c 3- | rev | cut -c 3- | rev)
   echo -e "Last modification (on GitHub): $MODIFICATION\n"
   if [[ "$BRANCH" == master ]]; then echo -e "${OR}  Version overview"; else
     echo -e "${OR}  Version overview ($BRANCH)${CL}"
@@ -648,7 +648,7 @@ UPDATE_VM () {
     if ! (ssh "$IP" exit >/dev/null 2>&1); then
       echo -e "${RD}  File for ssh connection found, but not correctly set?\n\
   Please configure SSH Key-Based Authentication${CL}\n\
-  Infos can be found here:<https://github.com/BassT23/Proxmox/blob/$BRANCH/ssh.md>
+  Infos can be found here:<https://github.com/atasky/Proxmox/blob/$BRANCH/ssh.md>
   Try to use QEMU insead\n"
       UPDATE_VM_QEMU
     else
@@ -696,7 +696,7 @@ UPDATE_VM () {
           UPDATE_CHECK
         else
           echo -e "${RD}  System is not supported.\n  Maybe with later version ;)\n${CL}"
-          echo -e "  If you want, make a request here: <https://github.com/BassT23/Proxmox/issues>\n"
+          echo -e "  If you want, make a request here: <https://github.com/atasky/Proxmox/issues>\n"
         fi
         return
 #      elif [[ $OS_BASE == win10 ]]; then
@@ -713,7 +713,7 @@ UPDATE_VM () {
 UPDATE_VM_QEMU () {
   if qm guest exec "$VM" test >/dev/null 2>&1; then
     echo -e "${OR}  QEMU found. SSH connection is also available - with better output.${CL}\n\
-  Please look here: <https://github.com/BassT23/Proxmox/blob/$BRANCH/ssh.md>\n"
+  Please look here: <https://github.com/atasky/Proxmox/blob/$BRANCH/ssh.md>\n"
     OS=$(qm guest cmd "$VM" get-osinfo | grep name)
     if [[ "$OS" =~ Ubuntu ]] || [[ "$OS" =~ Debian ]] || [[ "$OS" =~ Devuan ]]; then
       # Check Internet connection
@@ -755,12 +755,12 @@ UPDATE_VM_QEMU () {
       UPDATE_CHECK
     else
       echo -e "${RD}  System is not supported.\n  Maybe with later version ;)\n${CL}"
-      echo -e "  If you want, make a request here: <https://github.com/BassT23/Proxmox/issues>\n"
+      echo -e "  If you want, make a request here: <https://github.com/atasky/Proxmox/issues>\n"
     fi
   else
     echo -e "${RD}  SSH or QEMU guest agent is not initialized on VM ${CL}\n\
   ${OR}If you want to update VM, you must set up it by yourself!${CL}\n\
-  For ssh (harder, but nicer output), check this: <https://github.com/BassT23/Proxmox/blob/$BRANCH/ssh.md>\n\
+  For ssh (harder, but nicer output), check this: <https://github.com/atasky/Proxmox/blob/$BRANCH/ssh.md>\n\
   For QEMU (easy connection), check this: <https://pve.proxmox.com/wiki/Qemu-guest-agent>\n"
   fi
   CVM=""
