@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #################
-# Check Updates #
+# Check Updates  #
 #################
 
 VERSION="1.4.6"
